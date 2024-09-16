@@ -1,0 +1,19 @@
+spring:
+  cloud:
+    config:
+      enabled: false
+# config da region da aws
+cloud:
+  aws:
+    credentials:
+      access-key: Dumy-99
+      secret-key: Dumy-99
+    region:
+      static: us-east-1
+    endpoint:
+      uri: http://localhost:4566 # host do container do LocalStack
+
+# centralizar o nome do tópico e da fila em um arquivo de config
+events:
+  topic: notification-topic
+  queue: NOTIFICATION-DEMOFILAS-QUEUE
