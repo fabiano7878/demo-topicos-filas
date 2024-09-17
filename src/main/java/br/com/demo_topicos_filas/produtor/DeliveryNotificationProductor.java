@@ -1,4 +1,4 @@
-package br.com.demo_topicos_filas.consumer;
+package br.com.demo_topicos_filas.produtor;
 
 import io.awspring.cloud.messaging.listener.SqsMessageDeletionPolicy;
 import io.awspring.cloud.messaging.listener.annotation.SqsListener;
@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 @Slf4j
 @Component
-public class NotificationConsumer {
+public class DeliveryNotificationProductor {
 
     @SqsListener(value = "${events.queue}", deletionPolicy = SqsMessageDeletionPolicy.ON_SUCCESS)
     public void consume(Message<String> message){

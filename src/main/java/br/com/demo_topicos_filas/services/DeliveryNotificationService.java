@@ -13,16 +13,15 @@ import software.amazon.awssdk.services.sqs.model.SendMessageRequest;
 @Slf4j
 @RequiredArgsConstructor
 @Service
-public class NotificationService {
+public class DeliveryNotificationService {
 
     private final EventsConfig config;
     private final SnsClient snsClient;
     private final SqsClient sqsClient;
-
     public ResponseEntity<String> notifyTopic(NotificationMessage message) {
-        log.info("Notificando o topic {}", config.getTopic());
+        log.info("Notificando o topic, path completo {}", config.getPath());
         snsClient.publish(publishRequest -> publishRequest
-                .topicArn(config.getTopic())
+                .topicArn(config.getPath())
                 .message(message.content()));
         return ResponseEntity.ok().body("Tópico notificado com sucesso!");
     }

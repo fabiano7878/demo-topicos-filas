@@ -1,7 +1,7 @@
 package br.com.demo_topicos_filas.controller;
 
 import br.com.demo_topicos_filas.record.NotificationRequest;
-import br.com.demo_topicos_filas.services.NotificationService;
+import br.com.demo_topicos_filas.services.DeliveryNotificationService;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,7 +19,7 @@ public class DemoFilaController {
 private static final Logger log = LoggerFactory.getLogger(DemoFilaController.class);
 
     @Autowired
-    private final NotificationService service;
+    private final DeliveryNotificationService service;
 
     @GetMapping("/list")
     public ResponseEntity<String> consulta(){

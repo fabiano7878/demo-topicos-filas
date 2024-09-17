@@ -12,7 +12,7 @@ import software.amazon.awssdk.services.sqs.SqsClient;
 import java.net.URI;
 
 @Configuration
-public class LocalStackCloudConfig {
+public class ClientCloudConfig {
 
     @Value("${cloud.aws.endpoint.uri}")
     private String host;

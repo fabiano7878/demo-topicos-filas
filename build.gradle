@@ -43,9 +43,12 @@ dependencies {
 	implementation 'io.awspring.cloud:spring-cloud-aws-messaging:2.4.4'
 
 	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+	implementation 'org.springframework.boot:spring-boot-starter-artemis'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.cloud:spring-cloud-stream-test-binder'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	implementation 'jakarta.jms:jakarta.jms-api:3.1.0'
 }
 
 dependencyManagement {
