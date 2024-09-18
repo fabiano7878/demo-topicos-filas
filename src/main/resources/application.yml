@@ -5,6 +5,12 @@ spring:
 # config da region da aws
 cloud:
   aws:
+    sqs:
+      endpoint:
+        uri: http://localhost:4566
+    sns:
+      endpoint:
+        uri: http://localhost:4566
     credentials:
       access-key: Dumy-99
       secret-key: Dumy-99

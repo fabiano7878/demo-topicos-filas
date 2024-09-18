@@ -42,3 +42,26 @@ https://start.spring.io/
 
 As dependência da aws são as atuais desta época.
 
+
+#comando para facilitar nos testes
+
+- acessar o container
+  docker container exec -it localstack-demo_topicos_filas bash
+
+- criar o tópico sns
+awslocal sns create-topic --region us-east-1 --name notification-topic
+
+- criar a fila sns
+awslocal sqs create-queue --region us-east-1 --queue-name NOTIFICATION-DEMOFILAS-QUEUE
+
+- subscrever a fila no tópico
+awslocal --endpoint-url=http://localhost:4566 sns subscribe --topic-arn arn:aws:sns:us-east-1:000000000000:notification-topic --protocol sqs --notification-endpoint arn:aws:sqs:us-east-1:000000000000:NOTIFICATION-DEMOFILAS-QUEUE
+
+- publicar msg de teste no tópico
+awslocal --endpoint-url=http://localhost:4566 sns publish --topic-arn arn:aws:sns:us-east-1:000000000000:notification-topic --message '{"content": "testando o topico sns"}'
+
+- consultar as msg criadas na fila
+awslocal --endpoint-url=http://localhost:4566 sqs receive-message --queue-url http://sqs.us-east-1.localhost.localstack.cloud:4566/000000000000/NOTIFICATION-DEMOFILAS-QUEUE
+
+- apagar todas as msg da fila
+awslocal sqs purge-queue --queue-url http://sqs.us-east-1.localhost.localstack.cloud:4566/000000000000/NOTIFICATION-DEMOFILAS-QUEUE

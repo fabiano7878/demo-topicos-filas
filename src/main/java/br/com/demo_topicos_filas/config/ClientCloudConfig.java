@@ -26,6 +26,9 @@ public class ClientCloudConfig {
     @Value("${cloud.aws.region.static}")
     private String region;
 
+    @Value("${events.queue}")
+    private String queueName;
+
     // Cliente para o SNS
     @Bean
     public SnsClient snsClient() {
