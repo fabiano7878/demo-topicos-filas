@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 public class DeliveryNotificationProductor {
-    
+
     @SqsListener(value = "${events.queue}", deletionPolicy = SqsMessageDeletionPolicy.ON_SUCCESS)
     public void consume(Message<String> message) {
         log.info("Recebendo uma nova mensagem da fila...");
